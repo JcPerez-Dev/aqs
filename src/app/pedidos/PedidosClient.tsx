@@ -176,13 +176,12 @@ export default function PedidosClient({
               </p>
             </div>
 
-            <button
-              type="button"
-              className="primary-button"
-              disabled
-            >
-              Nuevo pedido
-            </button>
+            <Link
+  href="/pedidos/nuevo"
+  className="primary-button"
+>
+  Nuevo pedido
+</Link>
           </section>
 
           <section className="product-stats">
