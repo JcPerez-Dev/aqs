@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import Sidebar from "../../components/layout/Sidebar";
@@ -203,20 +204,20 @@ export default function ProductsClient({
 
   return (
     <div className="app-shell">
-     <Sidebar
-  open={sidebarOpen}
-  onClose={() =>
-    setSidebarOpen(false)
-  }
-/>
+      <Sidebar
+        open={sidebarOpen}
+        onClose={() =>
+          setSidebarOpen(false)
+        }
+      />
 
-<main className="main-area">
-  <Header
-    title="Dashboard"
-    onMenuClick={() =>
-      setSidebarOpen(true)
-    }
-  />
+      <main className="main-area">
+        <Header
+          title="Productos"
+          onMenuClick={() =>
+            setSidebarOpen(true)
+          }
+        />
 
         <div className="content">
           <section className="page-heading">
@@ -233,15 +234,12 @@ export default function ProductsClient({
               </p>
             </div>
 
-            <button
-              type="button"
-              className="primary-button"
-              disabled
-              title="La creación de productos se incorporará cuando esté disponible el endpoint correspondiente."
-            >
-              <span>+</span>
-              Nuevo producto
-            </button>
+            <Link
+  href="/productos/nuevo"
+  className="primary-button"
+>
+  Nuevo producto
+</Link>
           </section>
 
           <section className="product-stats">
@@ -441,13 +439,18 @@ export default function ProductsClient({
                         >
                           <td>
                             <div className="product-name-cell">
-                              <strong>
-                                {product.name}
-                              </strong>
+                              <Link
+                                href={`/productos/${product.id}`}
+                                className="product-link"
+                              >
+                                <strong>
+                                  {product.name}
+                                </strong>
 
-                              <span>
-                                {product.id}
-                              </span>
+                                <span>
+                                  {product.id}
+                                </span>
+                              </Link>
 
                               {product.description && (
                                 <small>
